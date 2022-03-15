@@ -1,13 +1,15 @@
 ﻿@model cw1.Models.Petition
 
 <tr>
-    <td>@Model.Title</td>
-    <td>@Model.Description</td>
     <td>
+    <h1 class="text-primary">@Model.Title</h1><hr />
+    <p>@Model.Description</p><br />
+    <p>@Model.Members.Count signatures so far:</p><br />
+
         @foreach (var m in Model.Members)
         {
-            @m.Name<br />
-            @m.Surname
+            <p>@m.Name @m.Surname</p>
         }
     </td>
 </tr>
+<br /><br />
