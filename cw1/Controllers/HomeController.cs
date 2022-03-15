@@ -16,5 +16,11 @@ namespace cw1.Controllers
 
             return View();
         }
+
+        public ActionResult Petitions()
+        {
+            return View("Petitions", d.Petitions);
+        }
     }
+
 }

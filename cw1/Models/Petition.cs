@@ -10,5 +10,14 @@ namespace cw1.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public ICollection<Member> Members { get; set; }
+
+        public List<Petition> AllPetitions
+        {
+            get
+            {
+                return Data.Instance.Petitions;
+            }
+        }
     }
+    
 }

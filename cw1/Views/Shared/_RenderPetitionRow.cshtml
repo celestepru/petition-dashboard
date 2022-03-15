@@ -1,0 +1,13 @@
+﻿@model cw1.Models.Petition
+
+<tr>
+    <td>@Model.Title</td>
+    <td>@Model.Description</td>
+    <td>
+        @foreach (var m in Model.Members)
+        {
+            @m.Name<br />
+            @m.Surname
+        }
+    </td>
+</tr>

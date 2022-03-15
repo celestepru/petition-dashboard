@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Petitions";
+}
+
+<h2>Petitions</h2>
+@model List<cw1.Models.Petition>
+<table>
+    <tr><th>Petition</th><th>Description</th><th>People</th></tr>
+    @foreach (var p in Model)
+    {
+        @Html.Partial("_RenderPetitionRow", p)
+    }
+</table>
+
