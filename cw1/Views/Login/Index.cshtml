@@ -5,13 +5,14 @@
 
 <style>
     .container {
-        width:100%;
+        width: 100%;
     }
 
     .spacer {
         padding: 5%;
     }
-    .auto{
+
+    .auto {
         margin: auto;
     }
 </style>
@@ -42,7 +43,7 @@
     </div>
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
-                <button id="loginSubmit" type="button" class="btn btn-primary">Login</button>
+            <button id="loginSubmit" type="button" class="btn btn-primary">Login</button>
         </div>
     </div>
     <div class="row">
@@ -61,31 +62,23 @@
     </div>
     <div class="row">
         <div class="col-lg-2 col-lg-offset-5">
-            <form role="form">
-                <div class="form-group">
-                    <label for="newUsername">Email address</label>
-                    <input type="email" class="form-control" id="registerUsername" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <label for="newName">Name</label>
-                    <input type="password" class="form-control" id="registerName" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="newSurname">Surname</label>
-                    <input type="password" class="form-control" id="registerSurname" placeholder="Surname">
-                </div>
-                <div class="form-group">
-                    <label for="newPassword">Password</label>
-                    <input type="password" class="form-control" id="registerPassword" placeholder="Password">
-                </div>
-            </form>
+            @Html.Partial("_RenderNewMember", new cw1.Models.Member())
         </div>
     </div>
-    <div class="row">
+    @*<div class="row">
         <div class="col-lg-4 col-lg-offset-4">
-            <button id="signupSubmit" type="button" class="btn btn-primary">Sign up</button>
+            <button id="signupSubmit" type="button" class="btn btn-primary">sign up</button>
         </div>
-    </div>
+    </div>*@
+
+    @model List<cw1.Models.Member>
+    <table>
+        <tr><th>Username</th><th>Name</th><th>Surname</th></tr>
+        @foreach (var m in Model)
+        {
+            @Html.Partial("_RenderMemberRows", m)
+        }
+    </table>
 </div>
 
 <script>

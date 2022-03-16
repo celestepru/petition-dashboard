@@ -223,6 +223,8 @@
     <Content Include="Views\Shared\_RenderPetitionRow.cshtml" />
     <Content Include="Views\Home\Petitions.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Shared\_RenderNewMember.cshtml" />
+    <Content Include="Views\Shared\_RenderMemberRows.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
