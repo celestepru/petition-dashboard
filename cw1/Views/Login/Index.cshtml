@@ -72,13 +72,16 @@
     </div>*@
 
     @model List<cw1.Models.Member>
-    <table>
-        <tr><th>Username</th><th>Name</th><th>Surname</th></tr>
-        @foreach (var m in Model)
-        {
-            @Html.Partial("_RenderMemberRows", m)
-        }
-    </table>
+    <form action="Login/Edit" method="GET">
+        <select name="id" size="5" style="width: 250px">
+            @foreach (var c in Model)
+            {
+                <option value="@c.Username">@c.Name</option>
+            }
+        </select>
+        <br />
+        <input type="submit" value="Edit" />
+    </form>
 </div>
 
 <script>
