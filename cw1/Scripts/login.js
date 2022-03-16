@@ -1,21 +1,24 @@
-﻿function checkJson() {
-    var username = $("#loginUsername").val();
+﻿$(document).on("click", "#loginSubmit", function () {
     var password = $("#loginPassword").val();
-    $.getJSON("/Content/yo.json", function (data) {
-        alert("ok")
+    var username = $("#loginUsername").val();
+    var arr = [];
+    $.getJSON("/Content/users.json", function (data) {
         $.each(data, function (key, val) {
-            alert(val)
-            //if (username == val[0]) {
-            //    if (password == val[1]) {
-            //        alert("Logged!");
-            //    } else {
-            //        alert("Wrong password");
-            //    }
-            //} else {
-            //    alert("User not found");
-            //}
+            if (username) {
+                if (username == val[0]) {
+                    if (password == val[1]) {
+                        alert("Logged in!")
+                    } else {
+                        alert("Wrong password")
+                    }
+                } else {
+                    alert("Username not found");
+                }
+            } else {
+                alert("Please insert valid username");
+            }
         });
     }).fail(function (data) {
-        alert("ERROR getting data")
-    });
-}
+        alert("FAILED to fetch data");
+    })
+});
