@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace cw1.Models
 {
@@ -40,5 +43,12 @@ namespace cw1.Models
 
         public List<Member> Members { get; set; }
         public List<Petition> Petitions { get; set; }
+
+        public void SaveMembers()
+        {
+            string json = JsonConvert.SerializeObject(Members.ToArray());
+            //write string to file
+            File.WriteAllText(@"C:\Users\celes\source\repos\cw1\cw1\Content\testd.json", json);
+        }
     }
 }

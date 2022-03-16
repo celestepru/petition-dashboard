@@ -23,6 +23,8 @@ namespace cw1.Controllers
                 member.Role = "User";
                 d.Members.Add(member);
             }
+
+            d.SaveMembers();
             return View("Index", d.Members);
         }
     }
