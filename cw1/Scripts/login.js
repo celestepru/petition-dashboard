@@ -20,5 +20,5 @@
         });
     }).fail(function (data) {
         alert("FAILED to fetch data");
-    })
+    });
 });
