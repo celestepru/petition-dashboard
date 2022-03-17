@@ -4,12 +4,6 @@
     <td>
     <h1 class="text-primary">@Model.Title</h1><hr />
     <p>@Model.Description</p><br />
-    <p>@Model.Members.Count signatures so far:</p><br />
-
-        @foreach (var m in Model.Members)
-        {
-            <p>@m.Name @m.Surname</p>
-        }
     </td>
 </tr>
 <br /><br />

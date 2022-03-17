@@ -235,6 +235,8 @@
     <Content Include="Views\Shared\_RenderMemberRows.cshtml" />
     <Content Include="Views\Shared\_EditMembers.cshtml" />
     <Content Include="Views\Shared\_LoginMember.cshtml" />
+    <Content Include="Views\Shared\_RenderNewPetition.cshtml" />
+    <Content Include="Views\Shared\_SignPetition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

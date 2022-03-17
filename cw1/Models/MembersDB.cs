@@ -15,7 +15,7 @@ namespace cw1.Models
         }
 
         public DbSet<Member> Members { get; set; }
-        public DbSet<Petition> Petition { get; set; }
+        public DbSet<Petition> Petitions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

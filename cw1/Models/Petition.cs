@@ -17,16 +17,9 @@ namespace cw1.Models
         [Required]
         public string Description { get; set; }
 
-        [Required]
+       
         public ICollection<Member> Members { get; set; }
-
-        public List<Petition> AllPetitions
-        {
-            get
-            {
-                return Data.Instance.Petitions;
-            }
-        }
+        
     }
     
 }

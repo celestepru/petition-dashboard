@@ -8,7 +8,7 @@
         width:100%;
    }
 </style>
-<div class="container">
+<div id="allPetitions" class="container-fluid">
     @Html.Partial("_NavBar")
     @model List<cw1.Models.Petition>
 
@@ -18,5 +18,27 @@
             @Html.Partial("_RenderPetitionRow", p)
         }
     </table>
+    <button id="addPetition">Add new petition</button>
 </div>
 
+<div id="addPetitions" class="container-fluid">
+    @Html.Partial("_RenderNewPetition", new cw1.Models.Petition())
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#addPetitions").hide();
+    });
+
+    $("#addPetition").on("click", function () {
+        var user = sessionStorage.getItem("user");
+        if (user != null) {
+            $("#allPetitions").fadeOut(function () {
+                $("#addPetitions").fadeIn();
+            });
+        } else {
+            alert("you need to be signed in!");
+        }
+    });
+
+</script>

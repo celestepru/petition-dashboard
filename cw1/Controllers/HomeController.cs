@@ -9,7 +9,8 @@ namespace cw1.Controllers
 {
     public class HomeController : Controller
     {
-        Data d = Data.Instance;
+
+        MembersDB db = new MembersDB();
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -19,8 +20,20 @@ namespace cw1.Controllers
 
         public ActionResult Petitions()
         {
-            return View("Petitions", d.Petitions);
+            return View("Petitions", db.Petitions.ToList());
+        }
+
+        public ActionResult AddPetition(Petition petition)
+        {
+            if (petition.Title != null && petition.Description != null)
+            {
+                db.Petitions.Add(petition);
+            }
+            db.SaveChanges();
+            return View("Petitions", db.Petitions.ToList());
         }
     }
+
+    
 
 }

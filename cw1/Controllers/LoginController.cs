@@ -10,7 +10,6 @@ namespace cw1.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        Data d = Data.Instance;
         MembersDB db = new MembersDB();
         public ActionResult Index()
         {
