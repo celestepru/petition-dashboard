@@ -3,20 +3,20 @@
 {
 <form role="form">
     <div class="form-group">
-        <label for="newUsername">Email address</label>
-        @Html.TextBoxFor(m => m.Username, new { placeholder = "Username" })
+        <label for="newUsername">Username</label>
+        @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
     </div>
     <div class="form-group">
         <label for="newName">Name</label>
-        @Html.TextBoxFor(m => m.Name, new { placeholder = "Name" })
+        @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
     </div>
     <div class="form-group">
         <label for="newSurname">Surname</label>
-        @Html.TextBoxFor(m => m.Surname, new { placeholder = "Surname" })
+        @Html.TextBoxFor(m => m.Surname, new { placeholder = "Surname", @class = "form-control" })
     </div>
     <div class="form-group">
         <label for="newPassword">Password</label>
-        @Html.TextBoxFor(m => m.Password, new { placeholder = "Password" })
+        @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control" })
     </div>
     <button id="signupSubmit" type="submit" class="btn btn-primary">Sign up</button>
 </form>

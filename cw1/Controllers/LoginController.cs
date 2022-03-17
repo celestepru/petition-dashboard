@@ -14,7 +14,23 @@ namespace cw1.Controllers
         MembersDB db = new MembersDB();
         public ActionResult Index()
         {
-            return View(d.Members);
+            return View(db.Members.ToList());
+        }
+
+        
+        public ActionResult Fetch(Member fetchedMember)
+        {
+            Member member = (db.Members.FirstOrDefault(m => m.Username.Equals(fetchedMember.Username)));
+            if (member == null)
+            {
+                return View("Error");
+            } else
+            {
+                if (member.Password == fetchedMember.Password) {
+                    return View("Index", db.Members.ToList());
+}
+            }
+            return View("Index", db.Members.ToList());
         }
 
         public ActionResult AddMember(Member member)

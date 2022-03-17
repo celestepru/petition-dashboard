@@ -1,0 +1,15 @@
+﻿@model cw1.Models.Member
+@using (Html.BeginForm("Fetch", "Login"))
+{
+    <form role="form">
+        <div class="form-group">
+            <label for="logUsername">Username</label>
+            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="logPassword">Password</label>
+            @Html.TextBoxFor(m => m.Name, new { placeholder = "Password", @class = "form-control" })
+        </div>
+        <button id="loginSubmit" type="submit" class="btn btn-primary">Login</button>
+    </form>
+}

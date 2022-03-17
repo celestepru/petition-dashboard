@@ -234,6 +234,7 @@
     <Content Include="Views\Shared\_RenderNewMember.cshtml" />
     <Content Include="Views\Shared\_RenderMemberRows.cshtml" />
     <Content Include="Views\Shared\_EditMembers.cshtml" />
+    <Content Include="Views\Shared\_LoginMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

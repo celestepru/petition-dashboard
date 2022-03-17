@@ -1,19 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Login";
 }
 
+@model List<cw1.Models.Member>
 <style>
-    .container {
-        width: 100%;
-    }
-
     .spacer {
-        padding: 5%;
-    }
-
-    .auto {
-        margin: auto;
+        padding: 2%;
     }
 </style>
 <script src="~/Scripts/login.js"></script>
@@ -25,29 +18,38 @@
             <h2>Please log in</h2>
         </div>
     </div>
+    <!-- Login -->
     <div class="row">
         <div class="col-lg-2 col-lg-offset-5">
-            <form>
-                <div class="form-group">
-                    <input id="loginUsername" class="form-control" type="text" placeholder="username" />
-                </div>
-            </form>
+            @Html.Partial("_LoginMember", new cw1.Models.Member())
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-2 col-lg-offset-5">
-            <div class="form-group">
-                <input id="loginPassword" class="form-control" type="password" placeholder="password" />
+    @*<div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <form>
+                    <div class="form-group">
+                        <input id="loginUsername" class="form-control" type="text" placeholder="username" />
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
-            <button id="loginSubmit" type="button" class="btn btn-primary">Login</button>
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <div class="form-group">
+                    <input id="loginPassword" class="form-control" type="password" placeholder="password" />
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-2 col-lg-offset-5">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <button id="loginSubmit" asp-route-username="cella3" asp-route-password="ciao" onclick="location.href='@Url.Action("Index", "Fetch")'"  type="button" class="btn btn-primary">Login</button>
+            </div>
+        </div>*@
+    <div class="row" style="margin:2%;">
+        <div class="col-lg-2 col-lg-offset-4" style="margin-right: 0">
+            <p>Not a member yet?</p>
+        </div>
+        <div class="col-lg-1" style="margin-left: 0">
             <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button>
         </div>
     </div>
@@ -60,27 +62,25 @@
             <h2>Become a member</h2>
         </div>
     </div>
+
+    <!-- Add new memner -->
     <div class="row">
         <div class="col-lg-2 col-lg-offset-5">
             @Html.Partial("_RenderNewMember", new cw1.Models.Member())
         </div>
     </div>
-    @*<div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
-            <button id="signupSubmit" type="button" class="btn btn-primary">sign up</button>
-        </div>
-    </div>*@
 
-    @model List<cw1.Models.Member>
-    <form>
-        <select name="id" size="5" style="width: 250px">
-            @foreach (var c in Model)
-            {
-                <option value="@c.Username">@c.Name</option>
-            }
-        </select>
-        <br />
-    </form>
+    @* <!-- SELECT EDIT (view all db entries -->
+        @model List<cw1.Models.Member>
+        <form>
+            <select name="id" size="5" style="width: 250px">
+                @foreach (var c in Model)
+                {
+                    <option value="@c.Username">@c.Name</option>
+                }
+            </select>
+            <br />
+        </form>*@
 </div>
 
 <script>
@@ -93,4 +93,5 @@
             $("#signupForm").fadeIn();
         });
     });
+
 </script>
