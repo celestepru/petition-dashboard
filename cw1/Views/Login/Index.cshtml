@@ -72,7 +72,7 @@
     </div>*@
 
     @model List<cw1.Models.Member>
-    <form action="Edit" method="GET">
+    <form>
         <select name="id" size="5" style="width: 250px">
             @foreach (var c in Model)
             {
@@ -80,7 +80,6 @@
             }
         </select>
         <br />
-        <input type="submit" value="Edit" />
     </form>
 </div>
 

@@ -19,21 +19,19 @@ namespace cw1.Controllers
 
         public ActionResult AddMember(Member member)
         {
+            //Member member = new Member { Username = "cella6", Name = "Celeste", Surname = "Prussiani", Password = "ciao", Role = "Admin" };
             if (member.Username != null && member.Name != null && member.Surname != null)
             {
                 member.Role = "User";
-                d.Members.Add(member);
+                db.Members.Add(member);
             }
 
-            d.SaveMembers();
+            db.SaveChanges();
             return View("Index", db.Members.ToList());
         }
 
         public ActionResult DB()
         {
-            //Member member = new Member { Username = "cella6", Name = "Celeste", Surname = "Prussiani", Password = "ciao", Role = "Admin" };
-            //db.Members.Add(member);
-            //db.SaveChanges();
             ViewBag.Message = db.Members.First().Name;
             return View("Index", db.Members.ToList());
         }
