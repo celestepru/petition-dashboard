@@ -23,7 +23,7 @@
                     </ul>
                     <form class="navbar-form navbar-right">
                         <button id="loginBtn" class="btn btn-default">Login</button>
-                        <p id="userPlaceholder"></p>
+                        <p id="userPlaceholder" class="text-primary"></p>
                     </form>
 
                 </div><!-- /.navbar-collapse -->
@@ -35,27 +35,11 @@
 <script>
     $(document).ready(function () {
         $("#userPlaceholder").hide();
-        var currentUser = getCookie("username");
-        if (currentUser != "") {
+        var currentUser = sessionStorage.getItem("user");
+        if (currentUser != null) {
             $("#loginBtn").hide();
             $("#userPlaceholder").show();
             $("#userPlaceholder").text(currentUser);
         }
     });
-
-    function getCookie(cname) {
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
 </script>
