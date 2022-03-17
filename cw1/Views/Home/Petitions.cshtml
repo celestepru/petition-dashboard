@@ -28,6 +28,9 @@
 <script>
     $(document).ready(function () {
         $("#addPetitions").hide();
+        for (var i = 0, len = localStorage.length; i < len; ++i) {
+            alert(localStorage.getItem(localStorage.key(i)));
+        }
     });
 
     $("#addPetition").on("click", function () {
@@ -41,29 +44,9 @@
         }
     });
 
-    //LOCAL STORAGE SIGNATURES
-    $(".signBtn").on("click", function () {
-        alert(this.id);
-        var petId = this.id;
-        var json = localStorage.getItem(petId);
+    $(".signBtn").on("click", function ()) {
         var user = sessionStorage.getItem("user");
-        if (user != null) {
-            if (json == null) {
-                alert("He");
-                var names = [];
-                names[0] = user;
-                localStorage.setItem(petId, JSON.stringify(names));
-            } else {
-                alert("Huh?");
-                var storedNames = [];
-                storedNames = JSON.parse(json);
-                alert(storedNames);
-                storedNames.push(user);
-                localStorage.setItem(petId, JSON.stringify(storedNames));
-            }
-        } else {
-            alert("You need to sign in to sign bro")
-        }
-    });
-
+        var current = this.id;
+        var redirect = current + ":" + user;
+    }
 </script>

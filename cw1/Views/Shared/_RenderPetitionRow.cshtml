@@ -2,11 +2,15 @@
 
 <tr>
     <td>
-    <h1 class="text-primary">@Model.Title</h1><hr />
-    <p>@Model.Description</p><br />
+        <h1 class="text-primary">@Model.Title</h1><hr />
+        <p>@Model.Description</p><br />
         <button class="signBtn" id="@Model.Id">Sign</button>
-        <p id="Members"></p>
+        <input id="signSubmit" type="submit" value="Add" />
+<td>
+        @foreach (var m in Model.Members)
+        {
+            @m.Name<br />
+        }
     </td>
-   
 </tr>
 <br /><br />

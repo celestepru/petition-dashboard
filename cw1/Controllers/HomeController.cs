@@ -10,6 +10,7 @@ namespace cw1.Controllers
     public class HomeController : Controller
     {
 
+        Data d = Data.Instance;
         MembersDB db = new MembersDB();
         public ActionResult Index()
         {
@@ -20,17 +21,24 @@ namespace cw1.Controllers
 
         public ActionResult Petitions()
         {
-            return View("Petitions", db.Petitions.ToList());
+            return View("Petitions", d.Petitions);
         }
 
         public ActionResult AddPetition(Petition petition)
         {
             if (petition.Title != null && petition.Description != null)
             {
-                db.Petitions.Add(petition);
+                d.Petitions.Add(petition);
             }
-            db.SaveChanges();
-            return View("Petitions", db.Petitions.ToList());
+            return View("Petitions", d.Petitions);
+        }
+        
+        public ActionResult AddMember(int petitionId, string username)
+        {
+            Member toAdd = (db.Members.FirstOrDefault(m => m.Username.Equals(username)));
+            Petition toChange = d.Petitions.FirstOrDefault(p => p.Id == petitionId);
+            toChange.Members.Add(toAdd);
+            return View("Petitions", d.Petitions);
         }
     }
 
