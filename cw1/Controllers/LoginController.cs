@@ -11,6 +11,7 @@ namespace cw1.Controllers
     {
         // GET: Login
         Data d = Data.Instance;
+        MembersDB db = new MembersDB();
         public ActionResult Index()
         {
             return View(d.Members);
@@ -25,17 +26,33 @@ namespace cw1.Controllers
             }
 
             d.SaveMembers();
-            return View("Index", d.Members);
+            return View("Index", db.Members.ToList());
         }
 
         public ActionResult DB()
         {
-            MembersDB db = new MembersDB();
-            Member member = new Member { Username = "cel", Name = "Celeste", Surname = "Prussiani", Password = "ciao", Role = "Admin" };
-            db.Members.Add(member);
-            db.SaveChanges();
+            //Member member = new Member { Username = "cella6", Name = "Celeste", Surname = "Prussiani", Password = "ciao", Role = "Admin" };
+            //db.Members.Add(member);
+            //db.SaveChanges();
             ViewBag.Message = db.Members.First().Name;
-            return View("Index");
+            return View("Index", db.Members.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Edit(String id)
+        {
+            Member member = (db.Members.FirstOrDefault(m => m.Username.Equals(id)));
+            if (member == null) return View("Error");
+            return View(member);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Member postedMember)
+        {
+            Member storedMember = (db.Members.FirstOrDefault(m => m.Username.Equals(postedMember.Username)));
+            storedMember.Name = postedMember.Name;
+            db.SaveChanges();
+            return RedirectToAction("Index", db.Members.ToList());
         }
     }
 }

@@ -7,11 +7,12 @@ using System.Web;
 
 namespace cw1.Models
 {
-    [Table("members")]
+    [Table("Members")]
     public class Member
     {
         [Key]
         public string Username { get; set; }
+
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Role { get; set; }

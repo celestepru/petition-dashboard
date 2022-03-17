@@ -7,13 +7,17 @@ using System.Web;
 
 namespace cw1.Models
 {
-    [Table("members")]
+    [Table("Petitions")]
     public class Petition
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Description { get; set; }
+
+        [Required]
         public ICollection<Member> Members { get; set; }
 
         public List<Petition> AllPetitions
