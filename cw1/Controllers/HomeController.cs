@@ -32,7 +32,6 @@ namespace cw1.Controllers
             }
             return View("Petitions", d.Petitions);
         }
-        
         public ActionResult AddMember(int petitionId, string username)
         {
             Member toAdd = (db.Members.FirstOrDefault(m => m.Username.Equals(username)));

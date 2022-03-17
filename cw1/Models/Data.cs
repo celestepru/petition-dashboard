@@ -14,9 +14,9 @@ namespace cw1.Models
         Data()
         {
             Petitions = new List<Petition>();
-            Petitions.Add(new Petition { Title = "Title1", Description = "Lorem ipsum dolor sit amet", Members = new List<Member>() });
-            Petitions.Add(new Petition { Title = "Title2", Description = "Lorem ipsum dolor sit amet", Members = new List<Member>() });
-            Petitions.Add(new Petition { Title = "Title3", Description = "Lorem ipsum dolor sit amet", Members = new List<Member>() });
+            Petitions.Add(new Petition { Id=1, Title = "Title1", Description = "Lorem ipsum dolor sit amet", Members = new List<Member>() });
+            Petitions.Add(new Petition { Id=2, Title = "Title2", Description = "Lorem ipsum dolor sit amet", Members = new List<Member>() });
+            Petitions.Add(new Petition { Id=3, Title = "Title3", Description = "Lorem ipsum dolor sit amet", Members = new List<Member>() });
         }
 
         public static Data Instance

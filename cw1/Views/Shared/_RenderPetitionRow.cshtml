@@ -5,7 +5,7 @@
         <h1 class="text-primary">@Model.Title</h1><hr />
         <p>@Model.Description</p><br />
         <button class="signBtn" id="@Model.Id">Sign</button>
-        <input id="signSubmit" type="submit" value="Add" />
+        <p>So far we have @Model.Members.Count signatures</p>
 <td>
         @foreach (var m in Model.Members)
         {
@@ -14,3 +14,16 @@
     </td>
 </tr>
 <br /><br />
+
+<script>
+    $(".signBtn").on("click", function () {
+        var user = sessionStorage.getItem("user");
+        if (user == null) {
+            alert("You have to be signed in darling");
+        } else {
+            id = this.id;
+            url = "http://localhost:57791/Home/AddMember?petitionId=" + this.id + "&username=" + user;
+            window.location = url;
+        }
+    });
+</script>
