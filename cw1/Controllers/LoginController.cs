@@ -33,7 +33,7 @@ namespace cw1.Controllers
             {
                 if (member.Password == fetchedMember.Password) {
 
-                    ViewBag.Message = "Found!";
+                    ViewBag.Message = "user:" + member.Username;
                 } else
                 {
                    ViewBag.Message = "Incorrect password";

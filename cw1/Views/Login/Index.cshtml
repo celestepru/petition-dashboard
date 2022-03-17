@@ -14,7 +14,8 @@
 <div id="loginForm" class="container-fluid text-center">
     <div class="spacer"></div>
     <div class="row">
-        @ViewBag.Message
+        <p id="control">@ViewBag.Message
+            </p>
     </div>
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
@@ -85,9 +86,19 @@
     </div>
 </div>
 
+<div id="loggedForm" class="container-fluid">
+    <div class="spacer"></div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 text-center">
+            <h2 id="welcome"></h2>
+            <p>You're all done bro.</p>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
         $("#signupForm").hide();
+        $("#loggedForm").hide();
     });
 
     $("#signupBtn").on("click", function () {
@@ -95,5 +106,5 @@
             $("#signupForm").fadeIn();
         });
     });
-
+    
 </script>
