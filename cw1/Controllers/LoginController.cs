@@ -49,6 +49,7 @@ namespace cw1.Controllers
             {
                 member.Role = "User";
                 db.Members.Add(member);
+                ViewBag.Message = "signup:" + member.Username;
             }
 
             db.SaveChanges();
