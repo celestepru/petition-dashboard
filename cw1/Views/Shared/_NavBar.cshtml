@@ -22,7 +22,8 @@
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Petitions" ? "active" : "")">@Html.ActionLink("Petitions", "Petitions", "Home")</li>
                     </ul>
                     <form class="navbar-form navbar-right">
-                        <button class="btn btn-default">Login</button>
+                        <button id="loginBtn" class="btn btn-default">Login</button>
+                        <p id="userPlaceholder"></p>
                     </form>
 
                 </div><!-- /.navbar-collapse -->
@@ -30,3 +31,31 @@
         </nav>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#userPlaceholder").hide();
+        var currentUser = getCookie("username");
+        if (currentUser != "") {
+            $("#loginBtn").hide();
+            $("#userPlaceholder").show();
+            $("#userPlaceholder").text(currentUser);
+        }
+    });
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+</script>
