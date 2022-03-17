@@ -1,20 +1,34 @@
 ﻿@model cw1.Models.Petition
 
-<tr>
-    <td>
-        <h1 class="text-primary">@Model.Title</h1><hr />
-        <p>@Model.Description</p><br />
-        <button class="signBtn" id="@Model.Id">Sign</button>
-        <p>So far we have @Model.Members.Count signatures</p>
-<td>
-        @foreach (var m in Model.Members)
-        {
-            @m.Name<br />
-        }
-    </td>
-</tr>
-<br /><br />
+<div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <h2>@Model.Title</h2>
+        </div>
+</div>
+<div class="row">
+    <div class="col-lg-5 col-lg-offset-1">
+        <p>@Model.Description</p>
+        <p>@Model.Members.Count signatures</p>
+        <ul class="list-group">
+            @foreach (var m in Model.Members)
+            {
+                <li class="list-group-item-text">@m.Name @m.Surname</li>
+                <span class="badge badge-primary badge-pill">@m.Role</span>
+            }
+        </ul>
+        <button class="signBtn btn-danger btn-sm" id="@Model.Id">Sign</button>
+    </div>
+    <div class="col-lg-5">
+        <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/F0A3/production/_123430616_hi074161896.jpg" />
+    </div>
+</div>
 
+<style>
+    img {
+        width: 500px;
+        height: 300px;
+    }
+</style>
 <script>
     $(".signBtn").on("click", function () {
         var user = sessionStorage.getItem("user");

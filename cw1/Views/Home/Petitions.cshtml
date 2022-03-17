@@ -4,22 +4,35 @@
 }
 
 <style>
-   .container {
-        width:100%;
-   }
+    .container {
+        width: 100%;
+    }
+    .box {
+        background-color: darkslateblue !important;
+        color: navajowhite;
+        border-radius: 5px;
+    }
 </style>
 <div id="allPetitions" class="container-fluid">
     @Html.Partial("_NavBar")
     @model List<cw1.Models.Petition>
 
-    <table>
-        @foreach (var p in Model)
-        {
-            @Html.Partial("_RenderPetitionRow", p)
-        }
-    </table>
-    <button id="addPetition">Add new petition</button>
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h1>All petitions</h1>
+                <h4>Give us a hand!</h4>
+            </div>
+        </div>
+    </div>
+
+    @foreach (var p in Model)
+    {
+        @Html.Partial("_RenderPetitionRow", p)
+    }
 </div>
+
+<button id="addPetition">Add new petition</button>
 
 <div id="addPetitions" class="container-fluid">
     @Html.Partial("_RenderNewPetition", new cw1.Models.Petition())
@@ -46,45 +59,4 @@
         var current = this.id;
         var redirect = current + ":" + user;
     }
-
-
-    ////LOCAL STORAGE SIGNATURES
-    //$(".signBtn").on("click", function () {
-    //    alert(this.id);
-    //    var petId = this.id;
-    //    var json = localStorage.getItem(petId);
-    //    var user = sessionStorage.getItem("user");
-    //    if (user != null) {
-    //        if (json == null) {
-    //            alert("He");
-    //            var names = [];
-    //            names[0] = user;
-    //            localStorage.setItem(petId, JSON.stringify(names));
-    //        } else {
-    //            alert("Huh?");
-    //            var storedNames = [];
-    //            storedNames = JSON.parse(json);
-    //            if (storedNames.includes(user)) {
-    //                alert("You've already signed this!");
-    //            } else {
-    //                storedNames.push(user);
-    //                localStorage.setItem(petId, JSON.stringify(storedNames));
-    //            }
-    //        }
-    //    } else {
-    //        alert("You need to sign in to sign bro")
-    //    }
-    //});
-
-    //function printSignatures() {
-    //    var json = localStorage.getItem(petitionId);
-    //    if (json != null) {
-    //        var storedNames = [];
-    //        storedNames = JSON.parse(json);
-    //        $.each(storedNames, function (key, value) {
-    //            $("#" + petitionId + " .signBox").append(value);
-    //        })
-    //    }
-    //
-
 </script>
