@@ -14,6 +14,9 @@
 <div id="loginForm" class="container-fluid text-center">
     <div class="spacer"></div>
     <div class="row">
+        @ViewBag.Message
+    </div>
+    <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
             <h2>Please log in</h2>
         </div>
@@ -53,6 +56,17 @@
             <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button>
         </div>
     </div>
+    <!-- SELECT EDIT (view all db entries -->
+    <form>
+        <select name="id" size="5" style="width: 250px">
+            @foreach (var c in Model)
+            {
+                <option value="@c.Username">@c.Username</option>
+                <option value="@c.Password">@c.Password</option>
+            }
+        </select>
+        <br />
+    </form>
 </div>
 
 <div id="signupForm" class="container-fluid">
@@ -69,18 +83,6 @@
             @Html.Partial("_RenderNewMember", new cw1.Models.Member())
         </div>
     </div>
-
-    @* <!-- SELECT EDIT (view all db entries -->
-        @model List<cw1.Models.Member>
-        <form>
-            <select name="id" size="5" style="width: 250px">
-                @foreach (var c in Model)
-                {
-                    <option value="@c.Username">@c.Name</option>
-                }
-            </select>
-            <br />
-        </form>*@
 </div>
 
 <script>

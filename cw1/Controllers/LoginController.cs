@@ -17,9 +17,14 @@ namespace cw1.Controllers
             return View(db.Members.ToList());
         }
 
-        
+        //Get user data for login
         public ActionResult Fetch(Member fetchedMember)
         {
+            if(fetchedMember.Username == null || fetchedMember.Password == null)
+            {
+                return View("Error");
+            }
+
             Member member = (db.Members.FirstOrDefault(m => m.Username.Equals(fetchedMember.Username)));
             if (member == null)
             {
@@ -27,8 +32,12 @@ namespace cw1.Controllers
             } else
             {
                 if (member.Password == fetchedMember.Password) {
-                    return View("Index", db.Members.ToList());
-}
+
+                    ViewBag.Message = "Found!";
+                } else
+                {
+                   ViewBag.Message = "Incorrect password";
+                }
             }
             return View("Index", db.Members.ToList());
         }
