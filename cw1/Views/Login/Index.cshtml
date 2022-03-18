@@ -3,6 +3,9 @@
     .spacer {
         padding: 1%;
     }
+    #control {
+        color:white;
+    }
 </style>
 <script src="~/Scripts/login.js"></script>
 <!--Login form container -->
@@ -11,87 +14,109 @@
     <div class="row">
         <p id="control">@ViewBag.Message</p>
     </div>
-    <!-- Login panel -->
-    <div class="col-lg-6 col-lg-offset-3">
-        <div class="panel panel-default text-center">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <img src="~/Content/illustrations/elections_03.svg" />
+    <div class="row">
+        <!-- Home Link -->
+        <div class="col-lg-2">
+            <span style="color:Highlight" class="glyphicon glyphicon-arrow-left"></span>
+            <a>@Html.ActionLink("Home", "Index", "Home")</a>
+        </div>
+        <!-- Login panel -->
+        <div class="col-lg-6 col-lg-offset-1">
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="~/Content/illustrations/elections_03.svg" />
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2>Login and start signing</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>Login and start signing</h2>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="spacer"></div>
+                    </div>
+                    @Html.Partial("_LoginMember", new cw1.Models.Member())
                 </div>
-                <div class="row">
-                    <div class="spacer"></div>
+                <!-- Panel footer-->
+                <div class="panel-footer">
+                    <small><i><b>Not a member yet?</b></i></small>
+                    <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button> <!-- Show sign up form -->
                 </div>
-                @Html.Partial("_LoginMember", new cw1.Models.Member())
-            </div>
-            <!-- Panel footer-->
-            <div class="panel-footer">
-                <small><i><b>Not a member yet?</b></i></small>
-                <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button> <!-- Show sign up form -->
             </div>
         </div>
     </div>
 </div>
 
 <!-- Sign up form -->
-<div id="signupForm" class="container">
-    <!-- Sign up panel -->
-    <div class="col-lg-6 col-lg-offset-3">
-        <div class="panel panel-default text-center">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <img src="~/Content/illustrations/elections_03.svg" />
+<div id="signupForm" class="container text-center">
+    <!-- Home Link -->
+    <div class="row">
+        <div class="col-lg-2">
+            <span style="color:Highlight" class="glyphicon glyphicon-arrow-left"></span>
+            <a>@Html.ActionLink("Home", "Index", "Home")</a>
+        </div>
+        <!-- Sign up panel -->
+        <div class="col-lg-6 col-lg-offset-1">
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="~/Content/illustrations/elections_03.svg" />
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2>Become a member</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>Become a member</h2>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="spacer"></div>
+                    </div>
+                    @Html.Partial("_RenderNewMember", new cw1.Models.Member())
                 </div>
-                <div class="row">
-                    <div class="spacer"></div>
+                <!-- Panel footer -->
+                <div class="panel-footer">
+                    <small><i><b>Already a member?</b></i></small>
+                    <button id="showLogin" class="btn btn-success btn-xs">Login</button> <!-- Go back to login -->
                 </div>
-                @Html.Partial("_RenderNewMember", new cw1.Models.Member())
-            </div>
-            <!-- Panel footer -->
-            <div class="panel-footer">
-                <small><i><b>Already a member?</b></i></small>
-                <button id="showLogin" class="btn btn-success btn-xs">Login</button> <!-- Go back to login -->
             </div>
         </div>
     </div>
 </div>
 
 <!-- Logged user homepage -->
-<div id="loggedForm" class="container-fluid">
-    <div class="col-lg-6 col-lg-offset-3">
-        <!-- Logged panel -->
-        <div class="panel panel-default text-center">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <img src="~/Content/illustrations/elections_03.svg" />
+<div id="loggedForm" class="container text-center">
+    <div class="row">
+
+        <!-- Home Link -->
+        <div class="col-lg-2">
+            <span style="color:Highlight" class="glyphicon glyphicon-arrow-left"></span>
+            <a>@Html.ActionLink("Home", "Index", "Home")</a>
+        </div>
+        <div class="col-lg-6 col-lg-offset-1">
+            <!-- Logged panel -->
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="~/Content/illustrations/elections_06.svg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2 id="welcome"></h2>
+                            <h4>Let's start making a difference.</h4>
+                            <h5>@Html.ActionLink("Petitions", "Petitions", "Home")</h5> <!-- Link to petitions -->
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2 id="welcome"></h2>
-                        <h4>Let's start making a difference.</h4>
-                        <h5>@Html.ActionLink("Petitions", "Petitions", "Home")</h5> <!-- Link to petitions -->
-                    </div>
+                <!-- Panel footer -->
+                <div class="panel-footer">
+                    <small><i><b>Need to go?</b></i></small>
+                    <button id="logoutBtn" class="btn btn-danger btn-xs">Logout</button> <!-- Logout -->
                 </div>
-            </div>
-            <!-- Panel footer -->
-            <div class="panel-footer">
-                <small><i><b>Need to go?</b></i></small>
-                <button id="logoutBtn" class="btn btn-danger btn-xs">Logout</button> <!-- Logout -->
             </div>
         </div>
     </div>
@@ -102,7 +127,6 @@
     $(document).ready(function () {
         $("#signupForm").hide();
         $("#loggedForm").hide();
-
     });
 
     //Show signup form on button click
