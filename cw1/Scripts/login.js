@@ -1,14 +1,40 @@
 ﻿$(document).ready(function () {
-        var buffer = $("#control").text().split(":");
-        var username = buffer[1];
-    if (buffer[0] == "user" && username.length > 0) {
-        $("#control").hide();
-        $("#loginForm").fadeOut(function () {
-            $("#loggedForm").fadeIn();
-        });
-        sessionStorage.setItem("user", username);
-        $("#welcome").text("Welcome " + username + "!");
-    } else if (buffer[0] == "signup") {
-        $("#control").text("Nice, you're all signed up! Login below to start.");
-    }
+    checkLoggedUser();
+    logIn();
 });
+
+$("#logoutBtn").on("click", function () {
+    logOut();
+});
+
+function logIn() {
+    checkLoggedUser();
+    var buffer = $("#control").text().split(":");
+    var username = buffer[1];
+    if (buffer[0] == "user" && username.length > 0) {
+        $("#control").empty();
+        sessionStorage.setItem("user", username);
+        displayLoggedHome(username);
+    }
+}
+
+function logOut() {
+    sessionStorage.removeItem("user");
+    $("#loggedForm").fadeOut(function () {
+        $("#loginForm").fadeIn();
+    })
+}
+
+function checkLoggedUser() {
+    var user = sessionStorage.getItem("user");
+    if (user != null) {
+        displayLoggedHome(user);
+    }
+}
+
+function displayLoggedHome(user) {
+    $("#loginForm").fadeOut(function () {
+        $("#loggedForm").fadeIn();
+        $("#welcome").text("Welcome " + user + "!");
+    });
+}

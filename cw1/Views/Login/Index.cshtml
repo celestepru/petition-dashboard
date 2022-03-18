@@ -13,9 +13,7 @@
 <div id="loginForm" class="container-fluid text-center">
     <div class="spacer"></div>
     <div class="row">
-        <p id="control">
-            @ViewBag.Message
-        </p>
+        <p id="control">@ViewBag.Message</p>
     </div>
     <div class="spacer"></div>
     <div class="col-lg-6 col-lg-offset-3">
@@ -75,10 +73,26 @@
 
 <div id="loggedForm" class="container-fluid">
     <div class="spacer"></div>
-    <div class="row">
-        <div class="col-lg-4 col-lg-offset-4 text-center">
-            <h2 id="welcome"></h2>
-            <p>You're all done bro.</p>
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default text-center">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="~/Content/illustrations/elections_03.svg" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 id="welcome"></h2>
+                        <h4>Let's start making a difference.</h4>
+                        <h5>@Html.ActionLink("Petitions", "Petitions", "Home")</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <small><i><b>Need to go?</b></i></small>
+                <button id="logoutBtn" class="btn btn-danger btn-xs">Logout</button>
+            </div>
         </div>
     </div>
 </div>
@@ -86,6 +100,7 @@
     $(document).ready(function () {
         $("#signupForm").hide();
         $("#loggedForm").hide();
+
     });
 
     $("#signupBtn").on("click", function () {
