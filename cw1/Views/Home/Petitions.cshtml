@@ -4,35 +4,77 @@
 }
 
 <style>
+
     .container {
         width: 100%;
     }
+
     .box {
         background-color: darkslateblue !important;
         color: navajowhite;
         border-radius: 5px;
     }
+
+    hr {
+        color: dimgrey !important;
+    }
+    .jumbotron {
+        border-radius: 0px 0px 6px 6px !important;
+    }
+
+    .top-squeeze {
+        margin-top: 0;
+    }
+
+    .spacer {
+        padding: 3%;
+    }
+
+    .bottom-squeeze {
+        margin-bottom: 0;
+    }
+
+    .box {
+        background-color: darkslateblue;
+        color: navajowhite;
+        border-radius: 10px;
+        padding: 2%;
+        text-align: center;
+    }
 </style>
-<div id="allPetitions" class="container-fluid">
+<div id="headerContainer" class="container">
     @Html.Partial("_NavBar")
     @model List<cw1.Models.Petition>
-
     <div class="row">
-        <div class="box">
-            <div class="col-lg-10 col-lg-offset-1">
-                <h1>All petitions</h1>
-                <h4>Give us a hand!</h4>
+        <div class="col-lg-12">
+            <div class="jumbotron text-danger">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="spacer"></div>
+                        <h1 class="text-primary">All petitions</h1>
+                        <h2 class="lead">Here's a list of all active petitions.</h2><hr />
+                        <h5>Contribute today: <i>petitions with more than 10000 signatures make a difference!</i></h5>
+                        <p>Do you have an idea about something that needs changed?</p>
+                        
+                        <button id="addPetition" class="btn-danger btn-lg">Add a new petition</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="~/Content/illustrations/elections_05.svg" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    @foreach (var p in Model)
-    {
-        @Html.Partial("_RenderPetitionRow", p)
-    }
 </div>
 
-<button id="addPetition">Add new petition</button>
+<div id="allPetitions" class="container">
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            @Html.Partial("_RenderPetitionRow", p)
+        }
+    </div>
+</div>
 
 <div id="addPetitions" class="container-fluid">
     @Html.Partial("_RenderNewPetition", new cw1.Models.Petition())
