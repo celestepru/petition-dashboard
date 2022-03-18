@@ -39,7 +39,13 @@ namespace cw1.Controllers
             {
                 //If the entered password is correct, pass username to view
                 if (member.Password == fetchedMember.Password) {
-                    ViewBag.Message = "user:" + member.Username;
+                    if (member.Role.Equals("Admin"))
+                    {
+                        ViewBag.Message = "admin:" + member.Username;
+                    } else
+                    {
+                        ViewBag.Message = "user:" + member.Username;
+                    }
                 } else
                 {
                     ViewBag.Message = "Incorrect password";  //If password is incorrect, show "Incorrect" message
@@ -55,7 +61,15 @@ namespace cw1.Controllers
         {
             if (member.Username != null && member.Name != null && member.Surname != null)  //check all required fields are entered
             {
-                member.Role = "User"; //create new member
+                if (member.Username.Equals("admin"))
+                {
+                    member.Role = "Admin";
+                }
+                else
+                {
+
+                    member.Role = "User";
+                }
                 db.Members.Add(member); //add to Database
                 //Pass member's username to view for login persistence
                 ViewBag.Message = "signup:" + member.Username;

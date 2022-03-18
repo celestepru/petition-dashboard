@@ -23,9 +23,12 @@
                 <div class="col-lg-3">
                     <p id="count"><b>@Model.Members.Count signatures</b></p>
                 </div>
-                <!-- Signatures -->
-                <div class="col-lg-1 col-lg-offset-7">
-                    <button class="signBtn btn-danger btn-sm" id="@Model.Id">Sign</button>
+                <!-- Control buttons -->
+                <div class="col-lg-1 col-lg-offset-5">
+                    <button class="deleteBtn btn-danger btn-sm" id="@Model.Id">Delete</button> <!-- Delete button. Only visible to admin -->
+                </div>
+                <div class="col-lg-1 col-lg-offset-1">
+                    <button class="signBtn btn-success btn-sm" id="@Model.Id">Sign</button> <!-- Sign button -->
                 </div>
             </div>
         </div>

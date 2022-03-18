@@ -15,7 +15,10 @@ function logIn() {
     checkLoggedUser();
     var buffer = $("#control").text().split(":");   //split ViewBag.Message string (with format "user:username")
     var username = buffer[1];
-    if (buffer[0] == "user" && username.length > 0) {   //check username is valid (i.e. ViewBag.Message isn't empty)
+    if ((buffer[0] == "user" || buffer[0] == "admin") && username.length > 0) {   //check username is valid (i.e. ViewBag.Message isn't empty)
+        if (buffer[0] == "admin") {
+            sessionStorage.setItem("admin", username);
+        }
         $("#control").empty();  //clear ViewBag.Message string
         sessionStorage.setItem("user", username);   //add to SessionStorage
         displayLoggedHome(username);    //hide login form
@@ -25,10 +28,12 @@ function logIn() {
 /* Logout function */
 /* Deletes user key from SessionStorage. */
 function logOut() {
+    sessionStorage.removeItem("admin");
     sessionStorage.removeItem("user");
     $("#loggedForm").fadeOut(function () {  
         $("#loginForm").fadeIn();   //show login form again
     })
+    $("#control").empty();
 }
 
 /* Check user is logged function */

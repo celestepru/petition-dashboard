@@ -56,9 +56,29 @@ namespace cw1.Controllers
             if (toAdd == null || toChange == null)
             {
                 return View("Error");
-            } else
+            }
+            else
             {
                 toChange.Members.Add(toAdd);    //Add member to petition's member list (sign petition)
+            }
+            return View("Petitions", d.Petitions);  //Return all petitions from Data instance
+        }
+
+        /* Add member action*/
+        /* Adds a new member to a petition's list. */
+        public ActionResult DeletePetition(int petitionId)
+        {
+            ViewBag.Title = "Petitions";
+            Petition toDelete = d.Petitions.FirstOrDefault(p => p.Id == petitionId);    //Find petition in Data Instance
+
+            //If either member or petition aren't in data source, show error page
+            if (toDelete == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                d.Petitions.Remove(toDelete);    //Add member to petition's member list (sign petition)
             }
             return View("Petitions", d.Petitions);  //Return all petitions from Data instance
         }
