@@ -41,7 +41,7 @@ namespace cw1.Controllers
                 if (member.Password == fetchedMember.Password) {
                     if (member.Role.Equals("Admin"))
                     {
-                        ViewBag.Message = "admin:" + member.Username;
+                        ViewBag.Message = "admin:" + member.Username;   //pass special status in case admin logs in
                     } else
                     {
                         ViewBag.Message = "user:" + member.Username;
@@ -61,20 +61,19 @@ namespace cw1.Controllers
         {
             if (member.Username != null && member.Name != null && member.Surname != null)  //check all required fields are entered
             {
-                if (member.Username.Equals("admin"))
+                if (member.Username.Equals("admin")) //hardcode admin account in database
                 {
-                    member.Role = "Admin";
+                    member.Role = "Admin"; 
                 }
                 else
                 {
 
-                    member.Role = "User";
+                    member.Role = "User";   //set every other user to standard role
                 }
                 db.Members.Add(member); //add to Database
                 //Pass member's username to view for login persistence
                 ViewBag.Message = "signup:" + member.Username;
             }
-
             db.SaveChanges();
             return View("Index", db.Members.ToList());
         }
