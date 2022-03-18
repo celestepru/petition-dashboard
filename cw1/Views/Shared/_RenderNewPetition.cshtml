@@ -1,15 +1,26 @@
 ﻿@model cw1.Models.Petition
 @using (Html.BeginForm("AddPetition", "Home"))
 {
-<form role="form">
-    <div class="form-group">
-        <label for="newTitle">Title</label>
-        @Html.TextBoxFor(m => m.Title, new { placeholder = "Title", @class = "form-control" })
+
+
+    <div id="panelId" class="panel panel-primary text-justify">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><h3 class="panel-title"><b>New petition</b></h3></div>
+        <div class="panel-body">
+            <div class="row">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="newTitle">Title</label>
+                        @Html.TextBoxFor(m => m.Title, new { placeholder = "Title", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="newDescription">Description</label>
+                        @Html.TextBoxFor(m => m.Description, new { placeholder = "Description", @class = "form-control" })
+                    </div>
+                    <button id="petitionSubmit" type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="newDescription">Description</label>
-        @Html.TextBoxFor(m => m.Description, new { placeholder = "Description", @class = "form-control" })
-    </div>
-    <button id="petitionSubmit" type="submit" class="btn btn-primary">Add</button>
-</form>
+
 }

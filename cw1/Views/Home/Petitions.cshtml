@@ -18,6 +18,7 @@
     hr {
         color: dimgrey !important;
     }
+
     .jumbotron {
         border-radius: 0px 0px 6px 6px !important;
     }
@@ -55,7 +56,7 @@
                         <h2 class="lead">Here's a list of all active petitions.</h2><hr />
                         <h5>Contribute today: <i>petitions with more than 10000 signatures make a difference!</i></h5>
                         <p>Do you have an idea about something that needs changed?</p>
-                        
+
                         <button id="addPetition" class="btn-danger btn-lg">Add a new petition</button>
                     </div>
                     <div class="col-lg-6">
@@ -92,14 +93,18 @@
                 $("#addPetitions").fadeIn();
             });
         } else {
-            alert("you need to be signed in!");
+            alert("Please login to add petitions.");
         }
     });
 
     $(".signBtn").on("click", function () {
         var user = sessionStorage.getItem("user");
-        var current = this.id;
-        var redirect = current + ":" + user;
+        if (user == null) {
+            alert("Please login to sign this petition.");
+        } else {
+            id = this.id;
+            url = "http://localhost:57791/Home/AddMember?petitionId=" + this.id + "&username=" + user;
+            window.location = url;
+        }
     });
-
 </script>

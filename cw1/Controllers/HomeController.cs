@@ -28,6 +28,7 @@ namespace cw1.Controllers
         {
             if (petition.Title != null && petition.Description != null)
             {
+                petition.Members = new List<Member>();
                 d.Petitions.Add(petition);
             }
             return View("Petitions", d.Petitions);
