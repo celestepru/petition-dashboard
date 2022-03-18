@@ -6,32 +6,35 @@
 @model List<cw1.Models.Member>
 <style>
     .spacer {
-        padding: 2%;
+        padding: 1%;
     }
 </style>
 <script src="~/Scripts/login.js"></script>
 <div id="loginForm" class="container-fluid text-center">
     <div class="spacer"></div>
     <div class="row">
-        <p id="control">@ViewBag.Message
-            </p>
+        <p id="control">
+            @ViewBag.Message
+    </p>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <img src="~/Content/illustrations/elections_03.svg" />
     </div>
-    <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
-            <h2>Please log in</h2>
-        </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <h2>Login and start signing</h2>
     </div>
+</div>
+
+    <div class="spacer"></div>
     <!-- Login -->
-    <div class="row">
-        <div class="col-lg-2 col-lg-offset-5">
             @Html.Partial("_LoginMember", new cw1.Models.Member())
-        </div>
-    </div>
-    <div class="row" style="margin:2%;">
-        <div class="col-lg-2 col-lg-offset-4" style="margin-right: 0">
-            <p>Not a member yet?</p>
-        </div>
-        <div class="col-lg-1" style="margin-left: 0">
+    <div class="spacer"></div>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <small><i><b>Not a member yet?</b></i></small>
             <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button>
         </div>
     </div>

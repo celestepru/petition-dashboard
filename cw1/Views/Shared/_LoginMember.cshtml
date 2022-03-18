@@ -1,15 +1,21 @@
 ﻿@model cw1.Models.Member
 @using (Html.BeginForm("Fetch", "Login"))
 {
-    <form role="form">
-        <div class="form-group">
-            <label for="logUsername">Username</label>
-            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
+    <form>
+        <div class="form-group row">
+            <label for="logUser" class="col-lg-1 col-lg-offset-4 col-form-label">Email</label>
+            <div class="col-lg-6">
+                @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            <label for="logPassword">Password</label>
-            @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control" })
+        <div class="form-group row">
+            <label for="logPassword" class="col-lg-1 col-lg-offset-4 col-form-label">Password</label>
+            <div class="col-lg-6">
+                @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control", type = "password" })
+            </div>
         </div>
-        <button id="loginSubmit" type="submit" class="btn btn-primary">Login</button>
+        <div class="form-group row">
+            <button id="loginSubmit" type="submit" class="btn btn-primary">Login</button>
+        </div>
     </form>
 }
