@@ -27,27 +27,6 @@
             @Html.Partial("_LoginMember", new cw1.Models.Member())
         </div>
     </div>
-    @*<div class="row">
-            <div class="col-lg-2 col-lg-offset-5">
-                <form>
-                    <div class="form-group">
-                        <input id="loginUsername" class="form-control" type="text" placeholder="username" />
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-5">
-                <div class="form-group">
-                    <input id="loginPassword" class="form-control" type="password" placeholder="password" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-lg-offset-4">
-                <button id="loginSubmit" asp-route-username="cella3" asp-route-password="ciao" onclick="location.href='@Url.Action("Index", "Fetch")'"  type="button" class="btn btn-primary">Login</button>
-            </div>
-        </div>*@
     <div class="row" style="margin:2%;">
         <div class="col-lg-2 col-lg-offset-4" style="margin-right: 0">
             <p>Not a member yet?</p>
@@ -56,17 +35,6 @@
             <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button>
         </div>
     </div>
-    <!-- SELECT EDIT (view all db entries -->
-    <form>
-        <select name="id" size="5" style="width: 250px">
-            @foreach (var c in Model)
-            {
-                <option value="@c.Username">@c.Username</option>
-                <option value="@c.Password">@c.Password</option>
-            }
-        </select>
-        <br />
-    </form>
 </div>
 
 <div id="signupForm" class="container-fluid">
