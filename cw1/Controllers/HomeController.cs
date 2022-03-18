@@ -7,38 +7,60 @@ using cw1.Models;
 
 namespace cw1.Controllers
 {
+    //Homepage controller
     public class HomeController : Controller
     {
 
-        Data d = Data.Instance;
-        MembersDB db = new MembersDB();
+        Data d = Data.Instance;         //Get Data singleton instance (Petitions)
+        MembersDB db = new MembersDB(); //Access Database (Members)
+
+        /* Home page */
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
             return View();
         }
 
+
+        /* Petition page  */
         public ActionResult Petitions()
         {
-            return View("Petitions", d.Petitions);
+
+            ViewBag.Title = "Petitions";
+            return View("Petitions", d.Petitions);  //Return all petitions from Data instance
         }
 
+        /* Add petition action*/
+        /* Creates a new petition and adds it to Data instance. (Not persistent) */
         public ActionResult AddPetition(Petition petition)
         {
-            if (petition.Title != null && petition.Description != null)
+            ViewBag.Title = "Petitions";
+            if (petition.Title != null && petition.Description != null) //Check petition is valid
             {
-                petition.Members = new List<Member>();
+                petition.Members = new List<Member>();  //Initialise List of empty members
                 d.Petitions.Add(petition);
             }
-            return View("Petitions", d.Petitions);
+            return View("Petitions", d.Petitions);  //Return all petitions from Data instance
         }
+
+
+        /* Add member action*/
+        /* Adds a new member to a petition's list. */
         public ActionResult AddMember(int petitionId, string username)
         {
-            Member toAdd = (db.Members.FirstOrDefault(m => m.Username.Equals(username)));
-            Petition toChange = d.Petitions.FirstOrDefault(p => p.Id == petitionId);
-            toChange.Members.Add(toAdd);
-            return View("Petitions", d.Petitions);
+            ViewBag.Title = "Petitions";
+            Member toAdd = (db.Members.FirstOrDefault(m => m.Username.Equals(username)));   //Find member in Database
+            Petition toChange = d.Petitions.FirstOrDefault(p => p.Id == petitionId);    //Find petition in Data Instance
+
+            //If either member or petition aren't in data source, show error page
+            if (toAdd == null || toChange == null)
+            {
+                return View("Error");
+            } else
+            {
+                toChange.Members.Add(toAdd);    //Add member to petition's member list (sign petition)
+            }
+            return View("Petitions", d.Petitions);  //Return all petitions from Data instance
         }
     }
 

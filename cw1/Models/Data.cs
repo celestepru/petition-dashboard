@@ -8,12 +8,15 @@ using Newtonsoft.Json;
 
 namespace cw1.Models
 {
+    /* Instance of data to substitute database. Not persistent */
     public class Data
     {
         static Data instance = null;
         Data()
         {
             Petitions = new List<Petition>();
+
+            //Populate petitions
             Petitions.Add(new Petition
             {
                 Id = 1,
@@ -40,6 +43,7 @@ namespace cw1.Models
             });
         }
 
+        //Singleton pattern
         public static Data Instance
         {
             get
@@ -48,7 +52,7 @@ namespace cw1.Models
                 return instance;
             }
         }
-        
+       
         public List<Petition> Petitions { get; set; }
     }
 }

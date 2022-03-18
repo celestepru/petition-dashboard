@@ -1,37 +1,16 @@
-﻿<style>
-    .container {
-        width: 100%;
-    }
-    .jumbotron {
-        border-radius: 0px 0px 6px 6px !important;
-    }
-    .top-squeeze {
-        margin-top:0;
-    }
-
-    .spacer {
-        padding: 3%;
-    }
-
-    .bottom-squeeze {
-        margin-bottom: 0;
-    }
-
-    .box {
-        background-color: darkslateblue;
-        color: navajowhite;
-        border-radius: 10px;
-        padding: 2%;
-        text-align: center;
-    }
-</style>
-
+﻿<link rel="stylesheet" href="~/Content/home.css" />
 <div class="container">
+    <!-- Show navbar -->
     @Html.Partial("_NavBar")
+
+
+    <!-- Grid structure -->
     <div class="row">
+        <!-- Jumbotron -->
         <div class="col-lg-12">
             <div class="jumbotron text-danger">
                 <div class="row">
+                    <!-- Intro text -->
                     <div class="col-lg-6">
                         <div class="spacer"></div>
                         <h1 class="text-primary">Help today</h1>
@@ -45,6 +24,7 @@
                             <input type="text" class="form-control" placeholder="Search for petition">
                         </div><!-- /input-group -->
                     </div>
+                    <!-- Intro illustration -->
                     <div class="col-lg-6">
                         <img src="~/Content/illustrations/elections_07.svg" />
                     </div>
@@ -52,7 +32,8 @@
             </div>
         </div>
     </div>
-    
+    <!-- Placeholder text (company info) -->
+    <!-- Row 1 -->
     <div class="row text-justify">
         <div class="col-lg-7 col-lg-offset-1">
             <h2>Who are we?</h2>
@@ -62,13 +43,16 @@
             <img src="~/Content/illustrations/elections_09.svg" />
         </div>
     </div>
+
+    <!-- Placeholder box -->
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 box">
             <h1>For every petition you sign, we donate a bunch of money!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia convallis tempus. Etiam non tempor sapien, eget tempus tellus.</p>
         </div>
     </div>
-    <div class="row"></div>
+    <div class="row"></div>    <!-- Empty row for extra padding -->
+    <!-- Row 2 -->
     <div class="row">
         <div class="col-lg-3 col-lg-offset-1">
             <img src="~/Content/illustrations/elections_10.svg" />

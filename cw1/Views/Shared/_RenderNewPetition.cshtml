@@ -1,25 +1,31 @@
 ﻿@model cw1.Models.Petition
 @using (Html.BeginForm("AddPetition", "Home"))
 {
-
+    <!-- New petition panel. Adds new petition to data source through "AddPetition" action -->
 <div class="row">
     <div class="col-lg-10 col-lg-offset-2">
+        <!-- New petition panel -->
         <div class="panel panel-primary text-center">
             <!-- Default panel contents -->
             <div class="panel-heading"><h3 class="panel-title"><b>New petition</b></h3></div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6 col-lg-offset-3">
+                        <!-- Petition details form -->
                         <form role="form">
+                            <!-- New title -->
                             <div class="form-group">
                                 <label for="newTitle">Title</label>
                                 @Html.TextBoxFor(m => m.Title, new { placeholder = "Title", @class = "form-control" })
                             </div>
+                            <!-- New description -->
                             <div class="form-group">
                                 <label for="newDescription">Description</label>
                                 @Html.TextBoxFor(m => m.Description, new { placeholder = "Description", @class = "form-control" })
                             </div>
+                            <!-- Submit -->
                             <button id="petitionSubmit" type="submit" class="btn btn-primary">Add</button>
+                            <!-- Dismiss (reload) -->
                             <button id="petitionDismiss" class="btn btn-danger">Cancel</button>
                         </form>
                     </div>

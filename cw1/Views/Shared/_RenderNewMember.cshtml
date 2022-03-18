@@ -1,31 +1,37 @@
 ﻿@model cw1.Models.Member
 @using (Html.BeginForm("AddMember", "Login"))
 {
+    <!-- Add member form. Adds new member to database. Used for signup-->
     <form>
+        <!-- New username -->
         <div class="form-group row">
             <label for="newUsername" class="col-lg-2 col-lg-offset-1 col-form-label">Username</label>
             <div class="col-lg-9">
                 @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
             </div>
         </div>
+        <!-- New name -->
         <div class="form-group row">
             <label for="newName" class="col-lg-2 col-lg-offset-1 col-form-label">Name</label>
             <div class="col-lg-9">
                 @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
             </div>
         </div>
+        <!-- New surname -->
         <div class="form-group row">
             <label for="newSurname" class="col-lg-2 col-lg-offset-1 col-form-label">Surname</label>
             <div class="col-lg-9">
                 @Html.TextBoxFor(m => m.Surname, new { placeholder = "Surname", @class = "form-control" })
             </div>
         </div>
+        <!-- New password -->
         <div class="form-group row">
             <label for="newPassword" class="col-lg-2 col-lg-offset-1 col-form-label">Password</label>
             <div class="col-lg-9">
                 @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control", type = "password" })
             </div>
         </div>
+        <!-- Submit -->
         <div class="form-group row">
             <button id="signupSubmit" type="submit" class="btn btn-primary">Sign up</button>
         </div>

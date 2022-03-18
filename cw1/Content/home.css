@@ -1,0 +1,27 @@
+﻿.container {
+    width: 100%;
+}
+
+.jumbotron {
+    border-radius: 0px 0px 6px 6px !important;
+}
+
+.top-squeeze {
+    margin-top: 0;
+}
+
+.spacer {
+    padding: 3%;
+}
+
+.bottom-squeeze {
+    margin-bottom: 0;
+}
+
+.box {
+    background-color: darkslateblue;
+    color: navajowhite;
+    border-radius: 10px;
+    padding: 2%;
+    text-align: center;
+}

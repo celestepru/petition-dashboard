@@ -1,64 +1,28 @@
-﻿
-@{
-    ViewBag.Title = "Petitions";
-}
-
-<style>
-
-    .container {
-        width: 100%;
-    }
-
-    .box {
-        background-color: darkslateblue !important;
-        color: navajowhite;
-        border-radius: 5px;
-    }
-
-    hr {
-        color: dimgrey !important;
-    }
-
-    .jumbotron {
-        border-radius: 0px 0px 6px 6px !important;
-    }
-
-    .top-squeeze {
-        margin-top: 0;
-    }
-
-    .spacer {
-        padding: 3%;
-    }
-
-    .bottom-squeeze {
-        margin-bottom: 0;
-    }
-
-    .box {
-        background-color: darkslateblue;
-        color: navajowhite;
-        border-radius: 10px;
-        padding: 2%;
-        text-align: center;
-    }
-</style>
+﻿@model List<cw1.Models.Petition>
+<link rel="stylesheet" href="~/Content/home.css" />
 <div id="headerContainer" class="container">
+    <!-- Show navbar -->
     @Html.Partial("_NavBar")
-    @model List<cw1.Models.Petition>
+    
+    <!-- Grid structure -->
     <div class="row">
+        <!-- Jumbotron -->
         <div class="col-lg-12">
             <div class="jumbotron text-danger">
                 <div class="row">
-                    <div id="introText" class="col-lg-6">
+
+                    <!-- Intro text -->
+                    <div class="col-lg-6">
                         <div class="spacer"></div>
                         <h1 class="text-primary">All petitions</h1>
                         <h2 class="lead">Here's a list of all active petitions.</h2><hr />
                         <h5>Contribute today: <i>petitions with more than 10000 signatures make a difference!</i></h5>
                         <p>Do you have an idea about something that needs changed?</p>
-
+                        <!-- Add new petition btn-->
                         <button id="addPetition" class="btn-danger btn-lg">Add a new petition</button>
                     </div>
+
+                    <!-- Add new petition panel -->
                     <div id="addPetitions" class="col-lg-6">
                         <div class="spacer"></div>
                         @Html.Partial("_RenderNewPetition", new cw1.Models.Petition())
@@ -68,10 +32,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  <!-- /jumbotron -->
     </div>
 </div>
 
+<!-- Container for all petitions -->
 <div id="allPetitions" class="container">
     <div class="row">
         @foreach (var p in Model)
@@ -83,25 +48,29 @@
 
 <script>
     $(document).ready(function () {
-        $("#addPetitions").hide();
+        $("#addPetitions").hide();  //hide new illustration panel
     });
 
+    /* Onclick event for new petition button. Shows new petition panel */
     $("#addPetition").on("click", function () {
         var user = sessionStorage.getItem("user");
-        if (user != null) {
-            $("#introIllustration").fadeOut(function () {
+        if (user != null) { //check user is logged in
+            $("#introIllustration").fadeOut(function () {   //hide illustration and replace with panel
                 $("#addPetitions").fadeIn();
                 $("#addPetition").hide();
             });
         } else {
-            alert("Please login to add petitions.");
+            alert("Please login to add petitions.");    //users must be logged in to add petitions
         }
     });
 
+    /* Onclick event for sign button
+     * Redirects user to AddMember action with their username and the petition's id.
+     */
     $(".signBtn").on("click", function () {
         var user = sessionStorage.getItem("user");
-        if (user == null) {
-            alert("Please login to sign this petition.");
+        if (user == null) { //check user is logged in
+            alert("Please login to sign this petition.");  
         } else {
             id = this.id;
             url = "http://localhost:57791/Home/AddMember?petitionId=" + this.id + "&username=" + user;

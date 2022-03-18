@@ -1,19 +1,23 @@
 ﻿@model cw1.Models.Member
 @using (Html.BeginForm("Fetch", "Login"))
 {
+    <!-- Login form. Redirects to Fetch action -->
     <form>
+        <!-- Username -->
         <div class="form-group row">
             <label for="logUser" class="col-lg-2 col-lg-offset-1 col-form-label">Username</label>
             <div class="col-lg-9">
                 @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
             </div>
         </div>
+        <!-- Password -->
         <div class="form-group row">
             <label for="logPassword" class="col-lg-2 col-lg-offset-1 col-form-label">Password</label>
             <div class="col-lg-9">
                 @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control", type = "password" })
             </div>
         </div>
+        <!-- Submit -->
         <div class="form-group row">
             <button id="loginSubmit" type="submit" class="btn btn-primary">Login</button>
         </div>

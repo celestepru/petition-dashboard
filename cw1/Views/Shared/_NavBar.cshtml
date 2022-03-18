@@ -1,10 +1,12 @@
-﻿<style>
+﻿<!-- Navbar partial view -->
+<style>
     .spacer {
         padding: 4%;
     }
 </style>
 <div class="row">
     <div class="col-lg-12">
+        <!-- Navbar -->
         <nav class="navbar navbar-inverse bottom-squeeze top-squeeze">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,21 +23,25 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
+                        <!-- Highlight current page -->
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li> 
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Petitions" ? "active" : "")">@Html.ActionLink("Petitions", "Petitions", "Home")</li>
+                        <!-- Navbar not needed for login -->
                         <li>@Html.ActionLink("Login", "Index", "Login")</li>
                     </ul>
+                <!-- Display logged username on navbar right handside -->
                     <form class="navbar-form navbar-right">
                         <div class="spacer"></div>
                         <p id="userPlaceholder" class="text-warning"></p>
                     </form>
                 </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+            </div>
         </nav>
     </div>
 </div>
 
 <script>
+    //If a user is logged in, display their username in navbar.
     $(document).ready(function () {
         var currentUser = sessionStorage.getItem("user");
         if (currentUser != null) {

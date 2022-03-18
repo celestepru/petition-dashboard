@@ -1,21 +1,17 @@
-﻿
-@{
-    ViewBag.Title = "Login";
-}
-
-@model List<cw1.Models.Member>
+﻿@model List<cw1.Models.Member>
 <style>
     .spacer {
         padding: 1%;
     }
 </style>
 <script src="~/Scripts/login.js"></script>
-<div id="loginForm" class="container-fluid text-center">
-    <div class="spacer"></div>
+<!--Login form container -->
+<div id="loginForm" class="container text-center">
+    <!-- Control message for user login -->
     <div class="row">
         <p id="control">@ViewBag.Message</p>
     </div>
-    <div class="spacer"></div>
+    <!-- Login panel -->
     <div class="col-lg-6 col-lg-offset-3">
         <div class="panel panel-default text-center">
             <div class="panel-body">
@@ -34,17 +30,18 @@
                 </div>
                 @Html.Partial("_LoginMember", new cw1.Models.Member())
             </div>
+            <!-- Panel footer-->
             <div class="panel-footer">
                 <small><i><b>Not a member yet?</b></i></small>
-                <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button>
+                <button id="signupBtn" class="btn btn-danger btn-xs">Sign up</button> <!-- Show sign up form -->
             </div>
         </div>
     </div>
 </div>
 
-<!-- SIGN UP -->
-<div id="signupForm" class="container-fluid">
-    <div class="spacer"></div>
+<!-- Sign up form -->
+<div id="signupForm" class="container">
+    <!-- Sign up panel -->
     <div class="col-lg-6 col-lg-offset-3">
         <div class="panel panel-default text-center">
             <div class="panel-body">
@@ -63,17 +60,19 @@
                 </div>
                 @Html.Partial("_RenderNewMember", new cw1.Models.Member())
             </div>
+            <!-- Panel footer -->
             <div class="panel-footer">
                 <small><i><b>Already a member?</b></i></small>
-                <button id="showLogin" class="btn btn-success btn-xs">Login</button>
+                <button id="showLogin" class="btn btn-success btn-xs">Login</button> <!-- Go back to login -->
             </div>
         </div>
     </div>
 </div>
 
+<!-- Logged user homepage -->
 <div id="loggedForm" class="container-fluid">
-    <div class="spacer"></div>
     <div class="col-lg-6 col-lg-offset-3">
+        <!-- Logged panel -->
         <div class="panel panel-default text-center">
             <div class="panel-body">
                 <div class="row">
@@ -85,38 +84,43 @@
                     <div class="col-lg-12">
                         <h2 id="welcome"></h2>
                         <h4>Let's start making a difference.</h4>
-                        <h5>@Html.ActionLink("Petitions", "Petitions", "Home")</h5>
+                        <h5>@Html.ActionLink("Petitions", "Petitions", "Home")</h5> <!-- Link to petitions -->
                     </div>
                 </div>
             </div>
+            <!-- Panel footer -->
             <div class="panel-footer">
                 <small><i><b>Need to go?</b></i></small>
-                <button id="logoutBtn" class="btn btn-danger btn-xs">Logout</button>
+                <button id="logoutBtn" class="btn btn-danger btn-xs">Logout</button> <!-- Logout -->
             </div>
         </div>
     </div>
 </div>
+
 <script>
+    //Show login form on load
     $(document).ready(function () {
         $("#signupForm").hide();
         $("#loggedForm").hide();
 
     });
 
+    //Show signup form on button click
     $("#signupBtn").on("click", function () {
         $("#loginForm").fadeOut(function () {
             $("#signupForm").fadeIn();
         });
     });
 
+    //Show login form on button click
     $("#showLogin").on("click", function () {
         $("#signupForm").fadeOut(function () {
             $("#loginForm").fadeIn();
         });
     });
 
+    //Logout user on button click
     $("#logoutBtn").on("click", function () {
         logOut();
     });
-
 </script>

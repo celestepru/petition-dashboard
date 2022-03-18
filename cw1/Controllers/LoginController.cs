@@ -9,73 +9,61 @@ namespace cw1.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        MembersDB db = new MembersDB();
+        MembersDB db = new MembersDB(); //Access database (Members)
+
+        /* Home page */
         public ActionResult Index()
         {
-            return View(db.Members.ToList());
+            ViewBag.Title = "Login";
+            return View(); 
         }
-
-        //Get user data for login
+        
+        /* Fetch member action */
+        /* Looks up member in database. Passes username of member to View so to
+         add it to sessionStorage for login persistence. */
         public ActionResult Fetch(Member fetchedMember)
         {
-            if(fetchedMember.Username == null || fetchedMember.Password == null)
+            if(fetchedMember.Username == null || fetchedMember.Password == null)    //Check member is valid 
             {
                 return View("Error");
             }
 
+            //Find member in Database
             Member member = (db.Members.FirstOrDefault(m => m.Username.Equals(fetchedMember.Username)));
+
+            //If member isn't in Database, show error page
             if (member == null)
             {
                 return View("Error");
             } else
             {
+                //If the entered password is correct, pass username to view
                 if (member.Password == fetchedMember.Password) {
-
-                    ViewBag.Message = "user:" + member.Username;
+                    ViewBag.Message = "user:" + member.Username;   
                 } else
                 {
-                   ViewBag.Message = "Incorrect password";
+                   ViewBag.Message = "Incorrect password";  //If password is incorrect, show "Incorrect" message
                 }
             }
-            return View("Index", db.Members.ToList());
+            return View("Index", db.Members.ToList());  //Return all Members
         }
 
+
+        /* Add member action*/
+        /* Adds a new member to the database. */
         public ActionResult AddMember(Member member)
         {
-            //Member member = new Member { Username = "cella6", Name = "Celeste", Surname = "Prussiani", Password = "ciao", Role = "Admin" };
-            if (member.Username != null && member.Name != null && member.Surname != null)
+            if (member.Username != null && member.Name != null && member.Surname != null)  //check all required fields are entered
             {
-                member.Role = "User";
-                db.Members.Add(member);
+                member.Role = "User"; //create new member
+                db.Members.Add(member); //add to Database
+                //Pass member's username to view for login persistence
                 ViewBag.Message = "signup:" + member.Username;
             }
 
             db.SaveChanges();
             return View("Index", db.Members.ToList());
         }
-
-        public ActionResult DB()
-        {
-            ViewBag.Message = db.Members.First().Name;
-            return View("Index", db.Members.ToList());
-        }
-
-        [HttpGet]
-        public ActionResult Edit(String id)
-        {
-            Member member = (db.Members.FirstOrDefault(m => m.Username.Equals(id)));
-            if (member == null) return View("Error");
-            return View(member);
-        }
-
-        [HttpPost]
-        public ActionResult Edit(Member postedMember)
-        {
-            Member storedMember = (db.Members.FirstOrDefault(m => m.Username.Equals(postedMember.Username)));
-            storedMember.Name = postedMember.Name;
-            db.SaveChanges();
-            return RedirectToAction("Index", db.Members.ToList());
-        }
+        
     }
 }
