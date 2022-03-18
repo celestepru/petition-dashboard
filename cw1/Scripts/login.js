@@ -3,10 +3,6 @@
     logIn();
 });
 
-$("#logoutBtn").on("click", function () {
-    logOut();
-});
-
 function logIn() {
     checkLoggedUser();
     var buffer = $("#control").text().split(":");
