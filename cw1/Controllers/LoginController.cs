@@ -39,10 +39,10 @@ namespace cw1.Controllers
             {
                 //If the entered password is correct, pass username to view
                 if (member.Password == fetchedMember.Password) {
-                    ViewBag.Message = "user:" + member.Username;   
+                    ViewBag.Message = "user:" + member.Username;
                 } else
                 {
-                   ViewBag.Message = "Incorrect password";  //If password is incorrect, show "Incorrect" message
+                    ViewBag.Message = "Incorrect password";  //If password is incorrect, show "Incorrect" message
                 }
             }
             return View("Index", db.Members.ToList());  //Return all Members
