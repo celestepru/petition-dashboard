@@ -59,7 +59,7 @@
                         <button id="addPetition" class="btn-danger btn-lg">Add a new petition</button>
                     </div>
                     <div class="col-lg-6">
-                        <img src="~/Content/illustrations/elections_05.svg" />
+                        <img src="~/Content/illustrations/elections_01.svg" />
                     </div>
                 </div>
             </div>
@@ -96,9 +96,10 @@
         }
     });
 
-    $(".signBtn").on("click", function ()) {
+    $(".signBtn").on("click", function () {
         var user = sessionStorage.getItem("user");
         var current = this.id;
         var redirect = current + ":" + user;
-    }
+    });
+
 </script>

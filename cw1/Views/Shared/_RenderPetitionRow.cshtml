@@ -1,18 +1,23 @@
 ﻿@model cw1.Models.Petition
 
 <style>
-    #thumbnail {
+    .pet-thumbnail {
         width: 435px;
+    }
+
+    .panel-heading {
+        background-color: slateblue !important;
+        color: navajowhite !important;
     }
 </style>
 <div class="col-lg-4">
-    <div class="panel panel-primary text-justify">
+    <div id="panelId" class="panel panel-primary text-justify">
         <!-- Default panel contents -->
-        <div class="panel-heading">@Model.Title</div>
+        <div id="@Model.Id+p" class="panel-heading"><b>@Model.Title</b></div>
         <div class="panel-body">
-            <div class="row">
+            <div id="imageWrapper" class="row">
                 <div class="col-lg-12">
-                    <img id="thumbnail" src="https://static.dw.com/image/60930825_403.jpg" />
+                    <img src="~/Content/illustrations/elections_05.svg" />
                 </div>
             </div>
             <div class="row">
@@ -49,4 +54,5 @@
             window.location = url;
         }
     });
+    
 </script>
