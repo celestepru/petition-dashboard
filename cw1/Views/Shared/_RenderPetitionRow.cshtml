@@ -17,22 +17,8 @@
                 <div class="col-lg-3">
                     <p id="count"><b>@Model.Members.Count signatures</b></p>
                 </div>
-                <!-- Control buttons -->
-                <div class="col-lg-1 col-lg-offset-5">
-                    <button class="deleteBtn btn-danger btn-sm" id="@Model.Id">Delete</button> <!-- Delete button. Only visible to admin -->
-                </div>
-                <div class="col-lg-1 col-lg-offset-1">
-                    <button class="signBtn btn-success btn-sm" id="@Model.Id">Sign</button> <!-- Sign button -->
-                </div>
             </div>
         </div>
-        <!-- List all members (signatures) -->
-        <ul class="list-group">
-            @foreach (var m in Model.Members)
-            {
-                <li class="list-group-item">@m.Name @m.Surname</li>
-            }
-        </ul>
     </div>
 </div>
 <style>
@@ -42,6 +28,9 @@
 
     .panel-heading {
         background-color: slateblue !important;
+        color: navajowhite !important;
+    }
+    h3 a {
         color: navajowhite !important;
     }
 </style>

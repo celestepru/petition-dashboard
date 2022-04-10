@@ -1,13 +1,18 @@
 ﻿@model cw1.Models.Petition
-<div class="col-lg-4">
+<link rel="stylesheet" href="~/Content/home.css" />
+<div class="container-fluid">
     <!-- Pettion panel. Renders existing petitions in panel view -->
-    <h1>@Model.Title</h1>
-
-    <p>@Model.Description</p>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>@Model.Title</h1>
+            <hr />
+            <p>@Model.Description</p>
+        </div>
+    </div>
 
     <!-- Signature counter -->
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-12">
             <p id="count"><b>@Model.Members.Count signatures</b></p>
         </div>
     </div>
@@ -24,4 +29,18 @@
     <div class="col-lg-1 col-lg-offset-1">
         <button class="signBtn btn-success btn-sm" id="@Model.Id">Sign</button> <!-- Sign button -->
     </div>
+    <button id="fb">Share</button>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#fb").on("click", function () {
+            ShareToFaceBook();
+        });
+    });
+    var params = "menubar=no,toolbar=no,status=no,width=570,height=570";
+    var url = "http://localhost:57791/Home/SinglePetition?petitionId=" + @Model.Id;
+    function ShareToFaceBook() {
+        let shareUrl = "http://www.facebook.com/sharer/sharer.php?u=" + url;    //would work but not with localhost. choose something else
+        window.open(shareUrl,"NewWindow", params);  
+    }
+</script>

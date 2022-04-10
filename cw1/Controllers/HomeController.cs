@@ -66,9 +66,13 @@ namespace cw1.Controllers
             }
             else
             {
-                toChange.Members.Add(toAdd);    //Add member to petition's member list (sign petition)
+                if(!toChange.Members.Contains(toAdd))
+                {
+                    toChange.Members.Add(toAdd);
+                }
+                    //Add member to petition's member list (sign petition)
             }
-            return View("Petitions", d.Petitions);  //Return all petitions from Data instance
+            return View("SinglePetition", toChange);  //Return all petitions from Data instance
         }
 
         /* Add member action*/

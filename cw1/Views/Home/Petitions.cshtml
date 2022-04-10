@@ -61,18 +61,18 @@
        // }
     });
 
-    ///* Onclick event for new petition button. Shows new petition panel */
-    //$("#addPetition").on("click", function () {
-    //    var user = sessionStorage.getItem("user");
-    //    if (user != null) { //check user is logged in
-    //        $("#introIllustration").fadeOut(function () {   //hide illustration and replace with panel
-    //            $("#addPetitions").fadeIn();
-    //            $("#addPetition").hide();
-    //        });
-    //    } else {
-    //        alert("Please login to add petitions.");    //users must be logged in to add petitions
-    //    }
-    //});
+    /* Onclick event for new petition button. Shows new petition panel */
+    $("#addPetition").on("click", function () {
+        var user = sessionStorage.getItem("user");
+        if (user != null) { //check user is logged in
+            $("#introIllustration").fadeOut(function () {   //hide illustration and replace with panel
+                $("#addPetitions").fadeIn();
+                $("#addPetition").hide();
+            });
+        } else {
+            alert("Please login to add petitions.");    //users must be logged in to add petitions
+        }
+    });
 
     ///* Onclick event for sign button
     // * Redirects user to AddMember action with their username and the petition's id.
