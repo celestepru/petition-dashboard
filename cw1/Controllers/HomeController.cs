@@ -30,6 +30,13 @@ namespace cw1.Controllers
             return View("Petitions", d.Petitions);  //Return all petitions from Data instance
         }
 
+        /* Petition page  */
+        public ActionResult SinglePetition(int petitionId)
+        {
+            Petition single = d.Petitions.FirstOrDefault(p => p.Id == petitionId);
+            return View("SinglePetition", single);  //Return all petitions from Data instance
+        }
+
         /* Add petition action*/
         /* Creates a new petition and adds it to Data instance. (Not persistent) */
         public ActionResult AddPetition(Petition petition)

@@ -236,6 +236,8 @@
     <Content Include="Views\Shared\_RenderMemberRows.cshtml" />
     <Content Include="Views\Shared\_LoginMember.cshtml" />
     <Content Include="Views\Shared\_RenderNewPetition.cshtml" />
+    <Content Include="Views\Shared\_SinglePetition.cshtml" />
+    <Content Include="Views\Home\SinglePetition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

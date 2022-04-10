@@ -1,0 +1,44 @@
+﻿
+@Html.Partial("_NavBar")
+@Html.Partial("_SinglePetition")
+
+<script>
+    $(document).ready(function () {
+        //  $("#addPetitions").hide();  //hide new illustration panel
+        $(".deleteBtn").hide();
+        var admin = sessionStorage.getItem("admin");
+        if (admin != null) {
+            $(".deleteBtn").show();
+        }
+    });
+
+    /* Onclick event for sign button
+     * Redirects user to AddMember action with their username and the petition's id.
+     */
+    $(".signBtn").on("click", function () {
+        var user = sessionStorage.getItem("user");
+        if (user == null) { //check user is logged in
+            alert("Please login to sign this petition.");
+        } else {
+            id = this.id;
+            url = "http://localhost:57791/Home/AddMember?petitionId=" + this.id + "&username=" + user;
+            window.location = url;
+        }
+    });
+
+
+    /* Onclick event for sign button
+     * Redirects user to AddMember action with their username and the petition's id.
+     */
+    $(".deleteBtn").on("click", function () {
+        var user = sessionStorage.getItem("user");
+        if (user == null) { //check user is logged in
+            alert("Please login to sign this petition.");
+        } else {
+            id = this.id;
+            url = "http://localhost:57791/Home/DeletePetition?petitionId=" + this.id + "&username=" + user;
+            window.location = url;
+        }
+    });
+</script>
+

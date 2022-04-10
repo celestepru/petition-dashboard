@@ -1,0 +1,27 @@
+﻿@model cw1.Models.Petition
+<div class="col-lg-4">
+    <!-- Pettion panel. Renders existing petitions in panel view -->
+    <h1>@Model.Title</h1>
+
+    <p>@Model.Description</p>
+
+    <!-- Signature counter -->
+    <div class="row">
+        <div class="col-lg-3">
+            <p id="count"><b>@Model.Members.Count signatures</b></p>
+        </div>
+    </div>
+    <ul class="list-group">
+        @foreach (var m in Model.Members)
+        {
+            <li class="list-group-item">@m.Name @m.Surname</li>
+        }
+    </ul>
+    <!-- Control buttons -->
+    <div class="col-lg-1 col-lg-offset-5">
+        <button class="deleteBtn btn-danger btn-sm" id="@Model.Id">Delete</button> <!-- Delete button. Only visible to admin -->
+    </div>
+    <div class="col-lg-1 col-lg-offset-1">
+        <button class="signBtn btn-success btn-sm" id="@Model.Id">Sign</button> <!-- Sign button -->
+    </div>
+</div>

@@ -49,52 +49,57 @@
 <script>
     $(document).ready(function () {
         $("#addPetitions").hide();  //hide new illustration panel
-        $(".deleteBtn").hide();
-        var admin = sessionStorage.getItem("admin");
-        if (admin != null) {
-            $(".deleteBtn").show();
-        }
-    });
-
-    /* Onclick event for new petition button. Shows new petition panel */
-    $("#addPetition").on("click", function () {
-        var user = sessionStorage.getItem("user");
-        if (user != null) { //check user is logged in
-            $("#introIllustration").fadeOut(function () {   //hide illustration and replace with panel
-                $("#addPetitions").fadeIn();
-                $("#addPetition").hide();
-            });
-        } else {
-            alert("Please login to add petitions.");    //users must be logged in to add petitions
-        }
-    });
-
-    /* Onclick event for sign button
-     * Redirects user to AddMember action with their username and the petition's id.
-     */
-    $(".signBtn").on("click", function () {
-        var user = sessionStorage.getItem("user");
-        if (user == null) { //check user is logged in
-            alert("Please login to sign this petition.");
-        } else {
+        $(".panel-title").onClick(function () {
             id = this.id;
-            url = "http://localhost:57791/Home/AddMember?petitionId=" + this.id + "&username=" + user;
+            url = "http://localhost:57791/Home/SinglePetition?petitionId=" + this.id;
             window.location = url;
-        }
+        });
+       //$(" .deleteBtn").hide();
+       // var admin = sessionStorage.getItem("admin");
+       // if (admin != null) {
+       //     $(".deleteBtn").show();
+       // }
     });
 
+    ///* Onclick event for new petition button. Shows new petition panel */
+    //$("#addPetition").on("click", function () {
+    //    var user = sessionStorage.getItem("user");
+    //    if (user != null) { //check user is logged in
+    //        $("#introIllustration").fadeOut(function () {   //hide illustration and replace with panel
+    //            $("#addPetitions").fadeIn();
+    //            $("#addPetition").hide();
+    //        });
+    //    } else {
+    //        alert("Please login to add petitions.");    //users must be logged in to add petitions
+    //    }
+    //});
 
-    /* Onclick event for sign button
-     * Redirects user to AddMember action with their username and the petition's id.
-     */
-    $(".deleteBtn").on("click", function () {
-        var user = sessionStorage.getItem("user");
-        if (user == null) { //check user is logged in
-            alert("Please login to sign this petition.");
-        } else {
-            id = this.id;
-            url = "http://localhost:57791/Home/DeletePetition?petitionId=" + this.id + "&username=" + user;
-            window.location = url;
-        }
-    });
+    ///* Onclick event for sign button
+    // * Redirects user to AddMember action with their username and the petition's id.
+    // */
+    //$(".signBtn").on("click", function () {
+    //    var user = sessionStorage.getItem("user");
+    //    if (user == null) { //check user is logged in
+    //        alert("Please login to sign this petition.");
+    //    } else {
+    //        id = this.id;
+    //        url = "http://localhost:57791/Home/AddMember?petitionId=" + this.id + "&username=" + user;
+    //        window.location = url;
+    //    }
+    //});
+
+
+    ///* Onclick event for sign button
+    // * Redirects user to AddMember action with their username and the petition's id.
+    // */
+    //$(".deleteBtn").on("click", function () {
+    //    var user = sessionStorage.getItem("user");
+    //    if (user == null) { //check user is logged in
+    //        alert("Please login to sign this petition.");
+    //    } else {
+    //        id = this.id;
+    //        url = "http://localhost:57791/Home/DeletePetition?petitionId=" + this.id + "&username=" + user;
+    //        window.location = url;
+    //    }
+    //});
 </script>
