@@ -1,4 +1,6 @@
-﻿<link rel="stylesheet" href="~/Content/home.css" />
+﻿
+@model cw1.Models.Petition
+<link rel="stylesheet" href="~/Content/home.css" />
 <div class="container">
     <!-- Show navbar -->
     @Html.Partial("_NavBar")
@@ -17,12 +19,11 @@
                         <h2 class="lead">Change the world one petition at a time</h2>
                         <hr />
                         <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae turpis nisi. Vestibulum imperdiet est eget leo auctor tincidunt.</h5>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default bg-primary" type="button">Go</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Search for petition">
-                        </div><!-- /input-group -->
+                        <br />
+                        <h4><i>Don't know where to start?</i></h4>
+                        <h5>Check out the most popular petition on the website:</h5>
+                        <!-- Container for all petitions -->
+                        <a href='@string.Format("http://localhost:57791/Home/SinglePetition?petitionId={0}", Model.Id)'><h4>@Model.Title</h4></a>
                     </div>
                     <!-- Intro illustration -->
                     <div class="col-lg-6 col-sm-12">

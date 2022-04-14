@@ -17,8 +17,19 @@ namespace cw1.Controllers
         /* Home page */
         public ActionResult Index()
         {
+            int max = 0;
+            int id = 1;
+            foreach(Petition p in d.Petitions)
+            {
+                if(p.Members.Count > max)
+                {
+                    max = p.Members.Count;
+                    id = p.Id;
+                }
+            }
+            Petition popular = d.Petitions.FirstOrDefault(p => p.Id == id);
             ViewBag.Title = "Home Page";
-            return View();
+            return View("Index", popular);
         }
 
 
