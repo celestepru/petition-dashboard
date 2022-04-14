@@ -22,6 +22,7 @@ namespace cw1.Models
         [Required]
         public string Description { get; set; }
         public ICollection<Member> Members { get; set; }    //list of members (signatures)
+   
         
     }
     
