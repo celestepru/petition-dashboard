@@ -34,7 +34,9 @@ namespace cw1.Controllers
             //If member isn't in Database, show error page
             if (member == null)
             {
+                ViewBag.Message = "User doesn't exist!";
                 return View("Error");
+
             } else
             {
                 //If the entered password is correct, pass username to view
@@ -49,6 +51,7 @@ namespace cw1.Controllers
                 } else
                 {
                     ViewBag.Message = "Incorrect password";  //If password is incorrect, show "Incorrect" message
+                    return View("Error");
                 }
             }
             return View("Index", db.Members.ToList());  //Return all Members

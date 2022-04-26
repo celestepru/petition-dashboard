@@ -4,15 +4,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Errore</title>
+    <title>Error</title>
+    <link rel="stylesheet" href="~/Content/home.css" />
 </head>
 <body>
-    <hgroup>
-        <h1>Error!</h1>
-        <h2>@ViewBag.Message</h2>
+    <div id="headerContainer" class="container">
+        @Html.Partial("_NavBar")
+        <div class="spacer"></div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <hgroup>
+                    <h1>Something went wrong</h1>
+                    <h2>@ViewBag.Message</h2>
+                </hgroup>
 
-    </hgroup>
-
-    <p>Seems like this user doesn't exist. Try again.</p>
+                <p>Please try again.</p>
+            </div>
+        </div>
+    </div>
+        
 </body>
 </html>
