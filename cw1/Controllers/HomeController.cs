@@ -15,8 +15,11 @@ namespace cw1.Controllers
         MembersDB db = new MembersDB(); //Access Database (Members)
 
         /* Home page */
+        /* Displays the most popular petition in database (the one with the highest 
+         number of signatures) */
         public ActionResult Index()
         {
+            
             int max = 0;
             int id = 1;
             foreach(Petition p in d.Petitions)
@@ -38,7 +41,7 @@ namespace cw1.Controllers
         {
 
             ViewBag.Title = "Petitions";
-            return View("Petitions", d.Petitions);  //Return all petitions from Data instance
+            return View("Petitions", d.Petitions);  //Return all petitions from database
         }
 
         /* Petition page  */
